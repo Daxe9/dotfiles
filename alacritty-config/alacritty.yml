@@ -1,0 +1,9 @@
+window:
+    opacity: 0.8
+    decorations: none
+    scrolling: 100
+
+colors:
+    primary:
+        background: "#FFFFFF"
+        foreground: "#000000"
