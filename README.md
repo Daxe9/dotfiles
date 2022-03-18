@@ -1,0 +1,3 @@
+my configurations on the superior ARCH LINUX, installed with archinstall.py :/
+But the most important thing is...
+I use arch by the way!
