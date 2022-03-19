@@ -24,3 +24,14 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " delete a whole word using ctrl+d
 :imap <C-d> <C-[>diwi
+
+" tab for autocomplete
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
