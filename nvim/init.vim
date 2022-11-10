@@ -10,28 +10,22 @@ set encoding=UTF-8
 set clipboard=unnamedplus
 set hidden
 set scrolloff=8
-
-" coc-vim settings
- set nobackup
- set nowritebackup
-" suggestion appears time
- set updatetime=200
-" set tab as navigate key in suggestion
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1) :
-"      \ CheckBackspace() ? "\<Tab>" :
-"     \ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
+set encoding=UTF-8
 set completeopt=menu,menuone,noselect
-call plug#begin()
+set nobackup
+set nowritebackup
+set updatetime=100
 
+" ----------------- Plugins -----------------
+call plug#begin()
+Plug 'ryanoasis/vim-devicons'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
+Plug 'github/copilot.vim'
 
 Plug 'preservim/nerdcommenter'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdatte' } 
@@ -46,15 +40,19 @@ Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Neovim color scheme
 
 call plug#end()
 
+" --------------------------------- Plugins settings ---------------------------------
 let NERDTreeShowHidden=1
 
 filetype plugin on
 let g:NERDDefaultAlign = 'left'
 
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
+
 " connect to lua config file
 lua require('_xie')
 
-" --------- MAPPING
+" --------------------------------- Key mapping ---------------------------------
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -62,7 +60,12 @@ endfunction
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
 
-map <F2> :NERDTreeToggle<CR>
+" copilot
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+let g:copilot_assume_mapped = v:true
+
+map <F3> :NERDTreeToggle<CR>
 
 " copy and paste directly to clipboard with + register
 vnoremap y "+y
@@ -83,8 +86,9 @@ inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
+inoremap < <><Esc>ha
 
-" --------- END MAPPING
+" --------------------------------- Commands --------------------------------
 
 " define command for find and replace
 command! -nargs=+ Fr execute '%substitute/' . split(<q-args>, ' ')[0] . '/' . split(<q-args>, ' ')[1] . '/gc'

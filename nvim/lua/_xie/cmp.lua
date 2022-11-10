@@ -8,6 +8,12 @@ if not snip_status_ok then
   return
 end
 
+local source_mapping = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	path = "[Path]",
+}
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -60,6 +66,7 @@ cmp.setup {
 		}),			
 	}),
 	sources = {
+		{ name = "nvim_lsp"},
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
@@ -68,6 +75,7 @@ cmp.setup {
 		fields = { "abbr", "menu" },
 	    format = function(entry, vim_item)
 			vim_item.menu = ({
+			nvim_lsp = "[LSP]",
 			luasnip = "[Snippet]",
 			buffer = "[Buffer]",
 			path = "[Path]",
