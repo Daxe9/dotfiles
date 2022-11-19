@@ -18,6 +18,7 @@ set updatetime=100
 
 " ----------------- Plugins -----------------
 call plug#begin()
+Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -64,7 +65,9 @@ imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-o
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
-
+let g:copilot_filetypes = {
+			\	'rust': v:false,
+			\ }
 map <F3> :NERDTreeToggle<CR>
 
 " copy and paste directly to clipboard with + register
@@ -80,13 +83,12 @@ nmap <C-p> :!prettier -w . <CR>
 nmap <C-f> :Telescope find_files <CR>
 
 " open a pair of brackets and quotes
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
-inoremap < <><Esc>ha
+"inoremap { {}<Esc>ha
+"inoremap ( ()<Esc>ha
+"inoremap [ []<Esc>ha
+"inoremap " ""<Esc>ha
+"inoremap ' ''<Esc>ha
+"inoremap ` ``<Esc>ha
 
 " --------------------------------- Commands --------------------------------
 

@@ -6,7 +6,8 @@ local servers = {
 	'clangd',
 	'html',
 	'cssls',
-	'jdtls'
+	'jdtls',
+	'rust_analyzer'
 }
 
 -- Use an on_attach function to only map the following keys
@@ -32,6 +33,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
+-- lsp servers configuration
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup {
 		autostart = true,
