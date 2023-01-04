@@ -1,5 +1,13 @@
-# Colors (Tokyo Night)
-# Source: https://github.com/zatchheems/tokyo-night-alacritty-theme
+window:
+  opacity: 0.8
+
+font:
+  normal:
+    family: monospace
+
+shell:
+  program: /usr/bin/fish
+
 colors:
   # Default colors
   primary:
@@ -28,16 +36,3 @@ colors:
     cyan:    '0x0db9d7'
     white:   '0xacb0d0'
 
-font:
-  normal:
-    family: JetBrains Mono
-shell: 
-  program: /usr/bin/fish
-  args: 
-    - -l
-    - -c 
-    - "tmux attach || tmux"
-
-
-window:
-  opacity: 0.8

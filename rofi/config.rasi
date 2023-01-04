@@ -1,0 +1,23 @@
+configuration {
+    /* drun config */
+    display-drun: "Applications";
+    
+    font: "JetBrainsMono Nerd Font Medium 15";
+
+    modi: "drun,window,run";
+    show-icons: true;
+    icon-theme: "Tela-circle-grey-dark";
+    fake-transparency: true;
+}
+
+* {
+    border: 0;
+}
+
+@theme "gruvbox-dark"
+
+ entry {
+    placeholder: "";
+ }
+
+ /* vim:ft=css
