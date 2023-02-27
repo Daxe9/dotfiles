@@ -56,7 +56,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,19 +187,29 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# windows gaps and borders
+# CUSTOM BINDINGS
+bindsym Print exec flameshot gui
+bindsym $mod+Print exec flameshot screen
+
+# WINDOWS GAPS AND BORDERS
 default_border pixel 2
 default_floating_border pixel 2
 gaps inner 7
 gaps outer 0
 
 # focused window border 
+
 # client.focused #000000 #285577 #ffffff #fca311 #fca311 
-for_window [class=".*"] border pixel 0
+client.focused #FFA7A6 #FFA7A6  #000000 #FFA7A6 #FFA7A6
+client.focused_inactive #8F94D2 #000000  #8F94D2 #8F94D2 #8F94D2
+client.unfocused #8F94D2 #8F94D2  #000000 #8F94D2 #8F94D2
+
+# for_window [class=".*"] border pixel 0
+
 # default_border none
 # default_floating_border none
 
-# focus window following mouse
+# FOCUS WINDOW FOLLOWING MOUSE
 focus_follows_mouse no
 
 # Start i3bar to display a workspace bar (plus the system information i3status

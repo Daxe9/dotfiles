@@ -7,17 +7,97 @@ configuration {
     modi: "drun,window,run";
     show-icons: true;
     icon-theme: "Tela-circle-grey-dark";
-    fake-transparency: true;
 }
+
+@theme "/dev/null"
+/* @theme "gruvbox-dark" */
 
 * {
     border: 0;
+	rosepine-base: #232136;
+	rosepine-surface: #2a273f;
+	rosepine-overlay: #393552;
+	rosepine-muted: #6e6a86;
+	rosepine-subtle: #908caa;
+	rosepine-text: #e0def4;
+	rosepine-love: #eb6f92;
+	rosepine-gold: #f6c177;
+	rosepine-rose: #ea9a97;
+	rosepine-pine: #3e8fb0;
+	rosepine-foam: #9ccfd8;
+	rosepine-iris: #c4a7e7;
+	rosepine-highlight-low: #2a283e;
+	rosepine-highlight-med: #44415a;
+	rosepine-highlight-high: #56526e;
+
+
+	background-color: @rosepine-base;
+    // background-light: @rosepine-surface;
+    foreground: @rosepine-text;
+    // foreground-dark: @rosepine-love;
+	// normal-foreground: @rosepine-muted;
 }
 
-@theme "gruvbox-dark"
+window {
+    width: 45%;
+    background-color: @rosepine-base;
+    border-radius: 10;
+}
 
- entry {
-    placeholder: "";
- }
+element {
+  padding: 8px 6px;
+  text-color: @rosepine-text;
+}
 
- /* vim:ft=css
+element selected {
+  background-color: @rosepine-highlight-low;
+  text-color: @rosepine-love;
+  border-radius: 12;
+}
+
+element-text selected, element-icon selected  {
+  background-color: @rosepine-highlight-low;
+}
+
+element-text {
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 21;
+  padding: 0 10 0 0;
+}
+
+entry {
+  background-color: @rosepine-surface;
+  padding: 12;
+  text-color: @rosepine-gold;
+  placeholder: "";
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+listview {
+  padding: 8 12;
+  background-color: @rosepine-base;
+  columns: 1;
+  lines: 8;
+}
+
+mainbox {
+  background-color: @rosepine-base;
+  children: [inputbar, listview];
+}
+
+prompt {
+  background-color: @rosepine-base;
+  enabled: true;
+  padding: 10 20;
+  text-color: @rosepine-rose;
+}
+
+/* vim: ft=sass
+
